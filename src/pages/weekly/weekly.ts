@@ -13,11 +13,11 @@ export class WeeklyPage {
   options = {};
 
   constructor(public navCtrl: NavController, private energyProvider: EnergyProvider) {
-    alert('WeeklyPage.constructor called');
+    console.log('WeeklyPage.constructor called');
   }
 
   ngOnInit() {
-    alert('WeeklyPage.onInit called');
+    console.log('WeeklyPage.onInit called');
 
     this.energyProvider.fetchWeekly().then(data => {
       let a:any = data;

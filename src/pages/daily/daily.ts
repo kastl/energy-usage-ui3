@@ -14,11 +14,11 @@ export class DailyPage {
   options = {};
 
   constructor(public navCtrl: NavController, private energyProvider: EnergyProvider) {
-    alert('DailyPage.constructor called');
+    console.log('DailyPage.constructor called');
   }
 
   ngOnInit() {
-    alert('DailyPage.onInit called');
+    console.log('DailyPage.onInit called');
 
     this.energyProvider.fetchDaily().then(data => {
       let a:any = data;

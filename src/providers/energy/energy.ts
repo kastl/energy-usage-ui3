@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 export class EnergyProvider {
 
   constructor(public http: Http) {
-    alert('EnergyProvider constructor');
+    console.log('EnergyProvider constructor');
   }
 
   private getWeeklyChartStruct() {
@@ -35,7 +35,7 @@ export class EnergyProvider {
         responsive: true,
         maintainAspectRatio: false,
         title: {
-          display: true,
+          display: false,
           text: 'Daily Energy Usage for a week',
           fontSize: 30
         },
@@ -92,8 +92,8 @@ export class EnergyProvider {
         responsive: true,
         maintainAspectRatio: false,
         title: {
-          display: true,
-          text: 'Hourly Energy Usage for ',
+          display: false,
+          text: 'Today - ',
           fontSize: 30
         },
         legend: {
@@ -125,27 +125,27 @@ export class EnergyProvider {
   //http://10.0.2.2:8080/energy/resources/api/weekly
   
   // running on device
-  //http://192.168.0.68:8080/energy/resources/api/weekly
+  //http://192.168.0.68:8080/energy/resources/api/weeklyaq  
   
   // running in server's browser
   //http://localhost:8080/energy/resources/api/weekly
   
   public fetchWeekly() {
-    alert ("fetchWeekly");
+    console.log ("fetchWeekly");
     return this.http.get('http://192.168.0.68:8080/energy/resources/api/weekly')
       .toPromise()
       .then((resp) => resp.json())
       .then((data) => this.extractWeekly(data))
-      .catch((err) => alert(err));
+      .catch((err) => console.log(err));
   }
 
   public fetchDaily() {
-    alert ("fetchDaily");
+    console.log ("fetchDaily");
     return this.http.get('http://192.168.0.68:8080/energy/resources/api/daily')
       .toPromise()
       .then((resp) => resp.json())
       .then((data) => this.extractDaily(data))
-      .catch((err) => alert(err));
+      .catch((err) => console.log(err));
   }
 
   private extractWeekly(data) {
@@ -155,7 +155,7 @@ export class EnergyProvider {
     // update labels
     let days = [];
     data.forEach(function (element) {
-      days.push(element.start);
+      days.push(element.start.substring(5));
     }, this);
     myState.chartData.labels = days;
 
