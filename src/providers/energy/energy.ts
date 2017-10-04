@@ -121,10 +121,18 @@ export class EnergyProvider {
     };
   }
 
+  //running in emulator
   //http://10.0.2.2:8080/energy/resources/api/weekly
+  
+  // running on device
+  //http://192.168.0.68:8080/energy/resources/api/weekly
+  
+  // running in server's browser
+  //http://localhost:8080/energy/resources/api/weekly
+  
   public fetchWeekly() {
     alert ("fetchWeekly");
-    return this.http.get('http://10.0.2.2:8080/energy/resources/api/weekly')
+    return this.http.get('http://192.168.0.68:8080/energy/resources/api/weekly')
       .toPromise()
       .then((resp) => resp.json())
       .then((data) => this.extractWeekly(data))
@@ -133,7 +141,7 @@ export class EnergyProvider {
 
   public fetchDaily() {
     alert ("fetchDaily");
-    return this.http.get('http://10.0.2.2:8080/energy/resources/api/daily')
+    return this.http.get('http://192.168.0.68:8080/energy/resources/api/daily')
       .toPromise()
       .then((resp) => resp.json())
       .then((data) => this.extractDaily(data))
