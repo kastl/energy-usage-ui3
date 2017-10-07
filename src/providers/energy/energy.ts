@@ -132,7 +132,7 @@ export class EnergyProvider {
   
   public fetchWeekly() {
     console.log ("fetchWeekly");
-    return this.http.get('http://192.168.0.68:8080/energy/resources/api/weekly')
+    return this.http.get('http://104.236.254.181:8080/resources/api/weekly')
       .toPromise()
       .then((resp) => resp.json())
       .then((data) => this.extractWeekly(data))
@@ -141,7 +141,7 @@ export class EnergyProvider {
 
   public fetchDaily() {
     console.log ("fetchDaily");
-    return this.http.get('http://192.168.0.68:8080/energy/resources/api/daily')
+    return this.http.get('http://104.236.254.181:8080/resources/api/daily')
       .toPromise()
       .then((resp) => resp.json())
       .then((data) => this.extractDaily(data))
